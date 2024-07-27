@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Student Details</h1>
+        <table border="3">
+            <thead><tr>
+                <th>id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        {% if key1 %}
+           <tbody>
+               {% for i in key1 %}
+               <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.Firstname}}</td>
+                <td>{{i.Lastname}}</td>
+                <td>{{i.Email}}</td>
+                <td>{{i.Contact}}</td>
+                <td>
+                    <form name="Editform" action="{% url 'editPage' pk=i.id %}" method="post">
+                        {%csrf_token%}
+                        <input type="submit" value="Edit">
+                    </form>
+                </td>
+                <td>
+                    <form name="DeleteForm" action="{% url 'delete' pk=i.id %}" method="post">
+                        {%csrf_token%}
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+                
+            </tr>
+            {%endfor%}
+        </tbody> 
+        {%endif%}
+            
+        </table>
+    </center>
+</body>
+</html>
