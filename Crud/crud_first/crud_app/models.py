@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Student(models.Model):
-    username = models.CharField(max_length=50)
+    Firstname = models.CharField(max_length=50)
     Lastname = models.CharField(max_length=50)
     Email = models.EmailField(max_length=50)
     Contact = models.BigIntegerField()
